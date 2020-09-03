@@ -81,14 +81,15 @@ public class IndexedDb {
 		IDBObjectStore store = transaction.objectStore(STORENAME);
 
 		int random = (int) (Math.random() * 50 + 1);
+		String key = Integer.valueOf(random).toString();
 
-		logger.info("Random: " + Integer.valueOf(random).toString());
+		logger.info("Random: " + key);
 
 		Product product = new Product();
-		product.setId(Integer.valueOf(random).toString());
-		product.setName("Lofi " + random);
+		product.setId(key);
+		product.setName("Lofi " + key);
 
-		store.add(product, "id");
+		store.add(product, key);
 	}
 
 }
