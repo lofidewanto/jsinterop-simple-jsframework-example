@@ -6,7 +6,7 @@ public class AppEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		new IndexedDb().createDb();
+		new IndexedDb().openDb();
 	}
 
 }

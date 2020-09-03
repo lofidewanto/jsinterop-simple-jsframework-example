@@ -29,7 +29,7 @@ public class IndexedDb {
 
 	private IDBDatabase db;
 
-	public void createDb() {
+	public void openDb() {
 		Window window = DomGlobal.window;
 
 		if (Js.asPropertyMap(window).has("indexedDB")) {
@@ -75,12 +75,18 @@ public class IndexedDb {
 	private void addProducts(Event event) {
 		logger.info("Success opening DB: " + event.type);
 
+		db = (IDBDatabase) openDBRequest.result;
+
 		IDBTransaction transaction = db.transaction(STORENAME, "readwrite");
 		IDBObjectStore store = transaction.objectStore(STORENAME);
 
+		int random = (int) (Math.random() * 50 + 1);
+
+		logger.info("Random: " + Integer.valueOf(random).toString());
+
 		Product product = new Product();
-		product.setId("1");
-		product.setName("Lofi");
+		product.setId(Integer.valueOf(random).toString());
+		product.setName("Lofi " + random);
 
 		store.add(product, "id");
 	}
