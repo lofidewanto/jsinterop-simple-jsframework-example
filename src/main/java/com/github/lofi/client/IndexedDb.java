@@ -16,12 +16,12 @@ import elemental2.indexeddb.IndexedDbGlobal;
 import jsinterop.base.Js;
 
 public class IndexedDb {
-
-	private static final String STORENAME = "mystorename";
-
+	
+	private static Logger logger = Logger.getLogger(IndexedDb.class.getName());
+	
 	private static final String DBNAME = "mydbtest";
 
-	private static Logger logger = Logger.getLogger(IndexedDb.class.getName());
+	private static final String STORENAME = "mystorename";
 
 	private IDBOpenDBRequest openDBRequest;
 
@@ -56,28 +56,28 @@ public class IndexedDb {
 		};
 	}
 
+	private void doUpgrade(IDBVersionChangeEvent event) {
+		logger.info("Upgrade DB: " + event.target.toString());
+
+		db = (IDBDatabase) openDBRequest.result;
+
+		IDBObjectStoreParameters params = IDBObjectStoreParameters.create();
+		String[] paths = { "id" };
+
+		params.setKeyPath(paths);
+		IDBObjectStore store = db.createObjectStore(STORENAME, params);
+
+		store.createIndex("products_id_unqiue", paths);
+	}
+	
 	private void addProducts(Event event) {
-		logger.info("OK opening DB: " + event.type);
+		logger.info("Success opening DB: " + event.type);
 
 		IDBTransaction transaction = db.transaction(STORENAME, "readwrite");
 		IDBObjectStore store = transaction.objectStore(STORENAME);
 
 		Product product = new Product();
 		store.add(product);
-	}
-
-	private void doUpgrade(IDBVersionChangeEvent event) {
-		logger.info("Upgrade... " + event.target.toString());
-
-		db = (IDBDatabase) openDBRequest.result;
-
-		IDBObjectStoreParameters params = IDBObjectStoreParameters.create();
-		String[] paths = { "products", "id" };
-
-		params.setKeyPath(paths);
-		IDBObjectStore store = db.createObjectStore(STORENAME, params);
-
-		store.createIndex("products_id_unqiue", paths);
 	}
 
 }
