@@ -21,7 +21,11 @@ http://127.0.0.1:8888/calculator/
 ## Some helps for using IndexedDB
 
 Examples of IndexedDB
+
+- Comparison of IndexedDB API and IndexedDB Promised library: https://developers.google.com/web/ilt/pwa/working-with-indexeddb#comparison_of_indexeddb_api_and_indexeddb_promised_library
 		
+- We use IndexedDB API with Elemental2
+
 - Google IndexedDB: https://developers.google.com/web/ilt/pwa/working-with-indexeddb#opening_a_database
 
 - Mozilla IndexedDB: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
@@ -33,6 +37,3 @@ Examples of IndexedDB
 - Elemental2 examples: https://github.com/google/elemental2/tree/master/samples
 		
 - Example in GWT Group: https://groups.google.com/g/google-web-toolkit/c/hUmBkKI_6ow/m/m6ppyUDGFwAJ
-
-
-
