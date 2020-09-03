@@ -16,10 +16,12 @@ import elemental2.indexeddb.IndexedDbGlobal;
 import jsinterop.base.Js;
 
 public class IndexedDb {
-	
+
 	private static Logger logger = Logger.getLogger(IndexedDb.class.getName());
-	
+
 	private static final String DBNAME = "mydbtest";
+
+	private static final double DBVERSION = 1.0;
 
 	private static final String STORENAME = "mystorename";
 
@@ -38,7 +40,7 @@ public class IndexedDb {
 		}
 
 		IDBFactory indexedDB = IndexedDbGlobal.indexedDB;
-		openDBRequest = indexedDB.open(DBNAME, 1.0);
+		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
 
 		openDBRequest.onerror = event -> {
 			logger.info("Error opening DB: " + event.target.toString());
@@ -63,13 +65,13 @@ public class IndexedDb {
 
 		IDBObjectStoreParameters params = IDBObjectStoreParameters.create();
 		String[] paths = { "id" };
-
 		params.setKeyPath(paths);
-		IDBObjectStore store = db.createObjectStore(STORENAME, params);
+
+		IDBObjectStore store = db.createObjectStore(STORENAME);
 
 		store.createIndex("products_id_unqiue", paths);
 	}
-	
+
 	private void addProducts(Event event) {
 		logger.info("Success opening DB: " + event.type);
 
@@ -77,7 +79,10 @@ public class IndexedDb {
 		IDBObjectStore store = transaction.objectStore(STORENAME);
 
 		Product product = new Product();
-		store.add(product);
+		product.setId("1");
+		product.setName("Lofi");
+
+		store.add(product, "id");
 	}
 
 }
