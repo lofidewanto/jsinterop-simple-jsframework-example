@@ -29,6 +29,7 @@ public class IndexedDb {
 
 	private IDBDatabase db;
 
+	@SuppressWarnings("unchecked")
 	public void openDb() {
 		Window window = DomGlobal.window;
 
