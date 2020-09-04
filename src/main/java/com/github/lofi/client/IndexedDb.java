@@ -45,17 +45,17 @@ public class IndexedDb {
 
 		openDBRequest.onerror = event -> {
 			logger.info("Error opening DB: " + event.target.toString());
-			return Js.undefined();
+			return null;
 		};
 
 		openDBRequest.onsuccess = event -> {
 			addProducts(event);
-			return Js.undefined();
+			return null;
 		};
 
 		openDBRequest.onupgradeneeded = event -> {
 			doUpgrade(event);
-			return Js.undefined();
+			return null;
 		};
 	}
 

@@ -28,10 +28,32 @@ http://127.0.0.1:8888/calculator/
 
 - Mozilla IndexedDB: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
 
-- Medium article IndexedDB: https://medium.com/jspoint/indexeddb-your-second-step-towards-progressive-web-apps-pwa-dcbcd6cc2076
+- Medium article IndexedDB for JavaScript: https://medium.com/jspoint/indexeddb-your-second-step-towards-progressive-web-apps-pwa-dcbcd6cc2076
 	
+- Example IndexedDB in JavaScript: https://github.com/mdn/to-do-notifications/blob/gh-pages/scripts/todo.js
+
 - IndexedDB Elemental2JavaDoc: https://javadoc.io/doc/com.google.elemental2/elemental2-indexeddb/latest/index.html
 
 - Elemental2 examples: https://github.com/google/elemental2/tree/master/samples
 		
-- Example in GWT Group: https://groups.google.com/g/google-web-toolkit/c/hUmBkKI_6ow/m/m6ppyUDGFwAJ
+- Example Elemental2 IndexedDB in GWT Group: https://groups.google.com/g/google-web-toolkit/c/hUmBkKI_6ow/m/m6ppyUDGFwAJ
+
+## Browsing in IndexedDB Chrome Webbrowser
+
+![IndexedDB Chrome](https://raw.githubusercontent.com/lofidewanto/jsinterop-simple-jsframework-example/tree/master/src/main/docs/indexeddb-chrome-browser.png)
+
+## Tips for Elemental2
+
+### Return of this event could be null or Js.undefined()
+
+```
+        openDBRequest.onsuccess = event -> {
+			addProducts(event);
+			return null;
+		};
+		
+		openDBRequest.onsuccess = event -> {
+			addProducts(event);
+			return Js.undefined();
+		};
+```
