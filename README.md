@@ -1,5 +1,5 @@
 # jsinterop-simple-jsframework-example
-Simple Example for Accessing JavaScript Frameworks from Java GWT
+Simple Example for Accessing JavaScript Frameworks from Java GWT with Elemental2: https://github.com/google/elemental2
 
 ## Build example
 To build the example:
