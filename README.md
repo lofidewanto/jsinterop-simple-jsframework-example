@@ -338,8 +338,8 @@ public class IDBRequest extends EventTarget {
 
 ### Summary JsInterop Generator and Webtack Generator
 
-- Elemental2 which is generated from JsInterop Generator is actually more JavaScript oriented since the
+- Elemental2 which is generated from *JsInterop Generator* is actually more JavaScript oriented since the
 source is from hand written Closure Externs.
-- WebTack Generatior is more Java oriented.
+- *WebTack Generator* is more Java oriented.
 
 
