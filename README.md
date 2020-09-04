@@ -74,7 +74,7 @@ In the case above Webtack would map it to Any but in some cases it maps it to @D
 
 ### Differences beetween JsInterop Generator generated file and Webtack Generator generated file
 
-*IDBRequest.java* from JsInterop Generator
+#### *IDBRequest.java* from JsInterop Generator
 
 ```
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
@@ -178,7 +178,7 @@ public class IDBRequest<T> implements EventTarget {
 }
 ```
 
-*IDBRequest.java* from Webtack Generator
+#### *IDBRequest.java* from Webtack Generator
 
 ```
 /**
