@@ -1,6 +1,10 @@
 # jsinterop-simple-jsframework-example
 Simple Example for Accessing JavaScript Frameworks from Java GWT with Elemental2: https://github.com/google/elemental2
 
+This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boot-samples
+
+[![Build Status](https://travis-ci.org/lofidewanto/jsinterop-simple-jsframework-example.svg?branch=master)](https://travis-ci.org/lofidewanto/jsinterop-simple-jsframework-example)
+
 ## Build example
 To build the example:
 ```
