@@ -6,9 +6,10 @@ import jsinterop.annotations.JsType;
 @JsType(namespace = JsPackage.GLOBAL, name = "Calculator", isNative = true)
 public class Calculator {
 
-    public int x;
+	public int x;
 
-    public int y;
+	public int y;
 
-    public native int sum();
+	public native int sum();
+
 }
