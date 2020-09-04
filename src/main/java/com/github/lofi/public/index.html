@@ -1,13 +1,20 @@
 <!doctype html>
 <html>
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-   <title>Demo GWT Webapp</title>
-   <!-- This is the transpiled Java files included the Calculator class into JavaScript -->
-   <script type="text/javascript" language="javascript" 
-      src="calculator.nocache.js"></script>
+	<script type="text/javascript" src="calculator.nocache.js"></script>
+
+	<script language="javascript" type="text/javascript">
+        Calculator = function () {
+            this.x;
+            this.y;
+        };
+        
+        Calculator.prototype.sum = function () {
+            return this.x + this.y;
+        };
+	</script>
 </head>
 <body>
-   
+<button onclick="console.log(new CalculatorService().calculatePrice(41, 2));">Click my Calculator!</button>
 </body>
 </html>
