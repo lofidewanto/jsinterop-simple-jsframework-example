@@ -47,13 +47,13 @@ http://127.0.0.1:8888/calculator/
 ### Return of this event could be null or Js.undefined()
 
 ```
-        openDBRequest.onsuccess = event -> {
-			addProducts(event);
-			return null;
-		};
+	openDBRequest.onsuccess = event -> {
+		addProducts(event);
+		return null;
+	};
 		
-		openDBRequest.onsuccess = event -> {
-			addProducts(event);
-			return Js.undefined();
-		};
+	openDBRequest.onsuccess = event -> {
+		addProducts(event);
+		return Js.undefined();
+	};
 ```
