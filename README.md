@@ -40,7 +40,7 @@ http://127.0.0.1:8888/calculator/
 
 ## Browsing in IndexedDB Chrome Webbrowser
 
-![IndexedDB Chrome](https://raw.githubusercontent.com/lofidewanto/jsinterop-simple-jsframework-example/tree/master/src/main/docs/indexeddb-chrome-browser.png)
+![IndexedDB Chrome](https://raw.githubusercontent.com/lofidewanto/jsinterop-simple-jsframework-example/master/src/main/docs/indexeddb-chrome-browser.png)
 
 ## Tips for Elemental2
 
