@@ -62,13 +62,13 @@ http://127.0.0.1:8888/calculator/
 	};
 ```
 
-### Generation process of Elemental2 libs (JsInterops files)
+### Generation process of JsInterops files (e.g. Elemental2 library)
 
-- The generator for generating the JsInterops files is JsInterop Generator (https://github.com/google/jsinterop-generator).
+- The generator for generating the JsInterops files is **JsInterop Generator** (https://github.com/google/jsinterop-generator).
 - JsInterop Generator generates Java JsInterops files from Closure Externs. Closure Externs are mostly hand written. Example: 
 Someone decided to map Any to a Template value. The Extern Def file is at https://github.com/google/closure-compiler/blob/master/externs/browser/w3c_indexeddb.js#L166 
 but really they could map it in a few different ways. 
-- Webtack Generator (https://github.com/realityforge/webtack) reads the WebIDL and generates Java JsInterop files from that. 
+- **Webtack Generator** (https://github.com/realityforge/webtack) reads the WebIDL and generates Java JsInterop files from that. 
 A similar but slightly different set of conventions from Elemental2. Example:  
 In the case above Webtack would map it to Any but in some cases it maps it to @DoNotAutobox object.
 
