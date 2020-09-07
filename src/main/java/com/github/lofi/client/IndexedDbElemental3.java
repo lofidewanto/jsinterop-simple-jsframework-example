@@ -2,26 +2,24 @@ package com.github.lofi.client;
 
 import java.util.logging.Logger;
 
-import elemental2.dom.DomGlobal;
-import elemental2.dom.Event;
-import elemental2.dom.Window;
-import elemental2.indexeddb.IDBDatabase;
-import elemental2.indexeddb.IDBFactory;
-import elemental2.indexeddb.IDBObjectStore;
-import elemental2.indexeddb.IDBObjectStoreParameters;
-import elemental2.indexeddb.IDBOpenDBRequest;
-import elemental2.indexeddb.IDBTransaction;
-import elemental2.indexeddb.IDBVersionChangeEvent;
-import elemental2.indexeddb.IndexedDbGlobal;
+import elemental3.Event;
+import elemental3.Global;
+import elemental3.IDBDatabase;
+import elemental3.IDBFactory;
+import elemental3.IDBObjectStore;
+import elemental3.IDBObjectStoreParameters;
+import elemental3.IDBOpenDBRequest;
+import elemental3.IDBTransaction;
+import elemental3.Window;
 import jsinterop.base.Js;
 
-public class IndexedDb {
+public class IndexedDbElemental3 {
 
-	private static Logger logger = Logger.getLogger(IndexedDb.class.getName());
+	private static Logger logger = Logger.getLogger(IndexedDbElemental3.class.getName());
 
 	private static final String DBNAME = "mydbtest";
 
-	private static final double DBVERSION = 1.0;
+	private static final int DBVERSION = 1;
 
 	private static final String STORENAME = "mystorename";
 
@@ -29,40 +27,36 @@ public class IndexedDb {
 
 	private IDBDatabase db;
 
-	@SuppressWarnings("unchecked")
 	public void openDb() {
-		Window window = DomGlobal.window;
+		Window window = Global.globalThis();
+		IDBFactory indexedDB = Global.globalThis().indexedDB();
 
 		if (Js.asPropertyMap(window).has("indexedDB")) {
 			logger.info("IndexedDB found 1");
 		}
-		if (IndexedDbGlobal.indexedDB != null) {
+		if (indexedDB != null) {
 			logger.info("IndexedDB found 2");
 		}
 
-		IDBFactory indexedDB = IndexedDbGlobal.indexedDB;
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
 
 		openDBRequest.onerror = event -> {
-			logger.info("Error opening DB: " + event.target.toString());
-			return null;
+			logger.info("Error opening DB: " + event.target().toString());
 		};
 
 		openDBRequest.onsuccess = event -> {
 			addProducts(event);
-			return null;
 		};
 
 		openDBRequest.onupgradeneeded = event -> {
 			doUpgrade(event);
-			return null;
 		};
 	}
 
-	private void doUpgrade(IDBVersionChangeEvent event) {
-		logger.info("Upgrade DB: " + event.target.toString());
+	private void doUpgrade(Event event) {
+		logger.info("Upgrade DB: " + event.target().toString());
 
-		db = (IDBDatabase) openDBRequest.result;
+		db = (IDBDatabase) openDBRequest.result();
 
 		IDBObjectStoreParameters params = IDBObjectStoreParameters.create();
 		String[] paths = { "id" };
@@ -74,9 +68,9 @@ public class IndexedDb {
 	}
 
 	private void addProducts(Event event) {
-		logger.info("Success opening DB: " + event.type);
+		logger.info("Success opening DB: " + event.type());
 
-		db = (IDBDatabase) openDBRequest.result;
+		db = (IDBDatabase) openDBRequest.result();
 
 		IDBTransaction transaction = db.transaction(STORENAME, "readwrite");
 		IDBObjectStore store = transaction.objectStore(STORENAME);
