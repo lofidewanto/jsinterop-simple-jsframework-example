@@ -32,15 +32,15 @@ public class IndexedDbElemental2 {
 	@SuppressWarnings("unchecked")
 	public void openDb() {
 		Window window = DomGlobal.window;
+		IDBFactory indexedDB = IndexedDbGlobal.indexedDB;
 
 		if (Js.asPropertyMap(window).has("indexedDB")) {
 			logger.info("IndexedDB found 1");
 		}
-		if (IndexedDbGlobal.indexedDB != null) {
+		if (indexedDB != null) {
 			logger.info("IndexedDB found 2");
 		}
 
-		IDBFactory indexedDB = IndexedDbGlobal.indexedDB;
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
 
 		openDBRequest.onerror = event -> {
