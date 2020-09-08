@@ -1,7 +1,7 @@
 # jsinterop-simple-jsframework-example
 Simple Example for Accessing JavaScript Frameworks from Java GWT 
-with [**Elemental2**:](https://github.com/google/elemental2) 
-and very early version of [**Elemental3 Webtack Generator**:](https://github.com/realityforge/webtack)
+with [**Elemental2**](https://github.com/google/elemental2) 
+and very early version of [**Elemental3 Webtack Generator**](https://github.com/realityforge/webtack)
 
 This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boot-samples
 
