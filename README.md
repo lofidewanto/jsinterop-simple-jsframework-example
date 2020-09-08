@@ -9,9 +9,9 @@ This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boo
 We have two examples to use IndexedDB APIs on the browse:+
 
 
-1. **indexeddb-elemental2-example**: this example uses Elemental2 lib.
+**1. indexeddb-elemental2-example**: this example uses Elemental2 lib.
 
-2. **indexeddb-elemental3-example**: this example uses Elemental3 lib from Webtack (very early version).
+**2. indexeddb-elemental3-example**: this example uses Elemental3 lib from Webtack (very early version).
 
 
 ## Build example
