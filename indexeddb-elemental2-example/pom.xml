@@ -1,0 +1,114 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<!-- Using gwt-boot-starter-parent -->
+		<groupId>com.github.gwtboot</groupId>
+		<artifactId>gwt-boot-starter-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<groupId>com.github.gwt.jsinterop.example</groupId>
+	<artifactId>indexeddb-elemental2-example</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>indexeddb-elemental2-example</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>5.6.2</junit.version>
+	</properties>
+
+	<dependencies>
+		<!-- GWT Starter Core - Basic -->
+		<dependency>
+			<groupId>com.github.gwtboot</groupId>
+			<artifactId>gwt-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.elemental2</groupId>
+			<artifactId>elemental2-indexeddb</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
+		<!-- Unit Test with Mockito and JUnit -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.21.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- GWT Maven Plugin -->
+			<plugin>
+				<groupId>net.ltgt.gwt.maven</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<configuration>
+					<moduleName>
+						com.github.lofi.Calculator
+					</moduleName>
+					<startupUrls>
+						<url>/calculator/</url>
+					</startupUrls>
+					<compilerArgs>
+						<arg>-generateJsInteropExports</arg>
+						<arg>-compileReport</arg>
+						<arg>-style</arg>
+						<arg>PRETTY</arg>
+					</compilerArgs>
+					<devmodeArgs>
+						<arg>-logLevel</arg>
+						<arg>INFO</arg>
+						<arg>-generateJsInteropExports</arg>
+						<arg>-style</arg>
+						<arg>PRETTY</arg>
+					</devmodeArgs>
+					<codeserverArgs>
+						<arg>-logLevel</arg>
+						<arg>INFO</arg>
+						<arg>-generateJsInteropExports</arg>
+						<arg>-style</arg>
+						<arg>PRETTY</arg>
+					</codeserverArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M4</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.jupiter</groupId>
+						<artifactId>junit-jupiter-engine</artifactId>
+						<version>${junit.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>sonatype-snapshots</id>
+			<name>Sonatype Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>
