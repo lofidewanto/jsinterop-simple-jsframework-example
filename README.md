@@ -1,6 +1,6 @@
 # jsinterop-simple-jsframework-example
-Simple Example for Accessing JavaScript Frameworks from Java GWT with Elemental2: https://github.com/google/elemental2 
-and very early version of Elemental3 Webtack Generator: https://github.com/realityforge/webtack
+Simple Example for Accessing JavaScript Frameworks from Java GWT with **Elemental2**: https://github.com/google/elemental2 
+and very early version of **Elemental3 Webtack Generator**: https://github.com/realityforge/webtack
 
 This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boot-samples
 
@@ -9,9 +9,9 @@ This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boo
 We have two examples to use IndexedDB APIs on the browse:+
 
 
-1. indexeddb-elemental2-example: this example uses Elemental2 lib.
+1. **indexeddb-elemental2-example**: this example uses Elemental2 lib.
 
-2. indexeddb-elemental3-example: this example uses Elemental3 lib from Webtack (very early version).
+2. **indexeddb-elemental3-example**: this example uses Elemental3 lib from Webtack (very early version).
 
 
 ## Build example
@@ -22,7 +22,7 @@ mvn clean package
 
 To run the example:
 
-1. First: go to the project you want to run: =indexeddb-elemental2-example= or =indexeddb-elemental3-example=
+1. First: go to the project you want to run: **indexeddb-elemental2-example** or **indexeddb-elemental3-example**
 
 2. In the directory run the GWT Dev Mode: 
 ```
