@@ -7,7 +7,7 @@ This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boo
 
 [![Build Status](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example.svg?branch=master)](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example)
 
-We have two examples to use IndexedDB APIs on the browse:+
+We have two examples to use IndexedDB APIs on the web browser:
 
 
 **1. indexeddb-elemental2-example**: this example uses Elemental2 lib.
@@ -57,7 +57,7 @@ http://127.0.0.1:8888/calculator/
 
 ## Browsing in IndexedDB Chrome Webbrowser
 
-![IndexedDB Chrome](https://raw.githubusercontent.com/lofidewanto/jsinterop-simple-jsframework-example/master/src/main/docs/indexeddb-chrome-browser.png)
+![IndexedDB Chrome](https://github.com/lofidewanto/jsinterop-simple-jsframework-example/raw/master/indexeddb-elemental2-example/src/main/docs/indexeddb-chrome-browser.png)
 
 ## Tips for Elemental2
 
