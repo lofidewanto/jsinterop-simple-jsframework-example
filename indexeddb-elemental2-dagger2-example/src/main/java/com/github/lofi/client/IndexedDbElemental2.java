@@ -2,6 +2,7 @@ package com.github.lofi.client;
 
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import elemental2.dom.DomGlobal;
@@ -30,6 +31,10 @@ public class IndexedDbElemental2 {
 	private IDBOpenDBRequest openDBRequest;
 
 	private IDBDatabase db;
+
+	@Inject
+	public IndexedDbElemental2() {
+	}
 
 	public void openDb() {
 		logger.info("Open DB... ");

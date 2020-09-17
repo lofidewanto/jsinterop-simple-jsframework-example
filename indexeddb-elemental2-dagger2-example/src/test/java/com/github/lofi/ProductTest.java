@@ -4,22 +4,24 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.logging.Logger;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.github.lofi.client.Product;
 
-public class ProductTest {
+class ProductTest {
 
 	private static Logger logger = Logger.getLogger(ProductTest.class.getName());
 
 	private Product product;
 
-	public ProductTest() {
+	@BeforeEach
+	void init() {
 		this.product = new Product();
 	}
 
 	@Test
-	public void create_Product() {
+	void create_Product() {
 		assertNotNull(product);
 
 		logger.info("Test...");
