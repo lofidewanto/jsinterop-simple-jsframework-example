@@ -1,0 +1,7 @@
+<module rename-to="calculator">
+	<inherits name="com.github.gwtboot.starter.Dagger2Starter" />
+	<inherits name="com.github.gwtboot.starter.ElementoCoreStarter"/>
+	<inherits name="elemental2.indexeddb.IndexedDb" />
+	
+	<entry-point class='com.github.lofi.client.AppEntryPoint' />
+</module>
