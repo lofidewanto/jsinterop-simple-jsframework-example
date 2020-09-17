@@ -5,6 +5,8 @@ and very early version of [**Elemental3 Webtack Generator**](https://github.com/
 
 This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boot-samples
 
+Take a look at this article to see the whole story: http://bit.ly/GWTJ2CLIndexedDB
+
 [![Build Status](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example.svg?branch=master)](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example)
 
 We have two examples to use IndexedDB APIs on the web browser:
