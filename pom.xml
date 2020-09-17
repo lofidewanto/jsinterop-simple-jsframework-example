@@ -12,5 +12,6 @@
 	<modules>
 		<module>indexeddb-elemental2-example</module>
 		<module>indexeddb-elemental3-example</module>
+		<module>indexeddb-elemental2-dagger2-example</module>
 	</modules>
 </project>
