@@ -24,5 +24,5 @@ public class ProductTest {
 
 		logger.info("Test...");
 	}
-	
+
 }

@@ -33,7 +33,7 @@ public class IndexedDbElemental2 {
 
 	public void openDb() {
 		logger.info("Open DB... ");
-		
+
 		Window window = DomGlobal.window;
 		IDBFactory indexedDB = IndexedDbGlobal.indexedDB;
 
@@ -50,7 +50,7 @@ public class IndexedDbElemental2 {
 	@SuppressWarnings("unchecked")
 	public void initDb() {
 		logger.info("Init DB... ");
-		
+
 		openDb();
 
 		openDBRequest.onerror = event -> {
@@ -103,7 +103,7 @@ public class IndexedDbElemental2 {
 			IDBObjectStore store = transaction.objectStore(STORENAME);
 
 			store.add(product, product.getId());
-			
+
 			logger.info("Success data stored!");
 
 			return null;
