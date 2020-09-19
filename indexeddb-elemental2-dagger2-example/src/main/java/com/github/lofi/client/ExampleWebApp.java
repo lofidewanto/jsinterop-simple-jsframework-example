@@ -11,7 +11,6 @@ import org.jboss.elemento.HtmlContentBuilder;
 
 import elemental2.dom.DomGlobal;
 import elemental2.dom.Element;
-import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLLabelElement;
 
 @Singleton
@@ -26,16 +25,12 @@ public class ExampleWebApp {
 	}
 
 	private void createScreen() {
-		Element element = DomGlobal.document.getElementById("panel");
+		Element panelElement = DomGlobal.document.getElementById("panel");
 
-		HtmlContentBuilder<HTMLLabelElement> label = label().textContent("Try this to add data... ");
-		HtmlContentBuilder<HTMLButtonElement> button = button();
-		button.textContent("Click to add data!");
-		button.on(click, event -> createProduct());
+		HtmlContentBuilder<HTMLLabelElement> label = label().textContent("Try this to add data... ")
+				.add(button().textContent("Click to add data!").on(click, event -> createProduct()));
 
-		label.add(button);
-
-		element.appendChild(label.element());
+		panelElement.appendChild(label.element());
 	}
 
 	private void createProduct() {

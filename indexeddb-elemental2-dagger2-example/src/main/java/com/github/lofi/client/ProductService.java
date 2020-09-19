@@ -10,10 +10,10 @@ public class ProductService {
 
 	private static Logger logger = Logger.getLogger(ProductService.class.getName());
 
-	private ProductRepository productRepository;
+	private ProductIndexedDbRepository productRepository;
 
 	@Inject
-	public ProductService(ProductRepository productRepository) {
+	public ProductService(ProductIndexedDbRepository productRepository) {
 		this.productRepository = productRepository;
 	}
 

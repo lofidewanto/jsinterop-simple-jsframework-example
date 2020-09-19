@@ -18,9 +18,9 @@ import elemental2.indexeddb.IndexedDbGlobal;
 import jsinterop.base.Js;
 
 @Singleton
-public class IndexedDbElemental2 {
+public class ProductIndexedDbRepository {
 
-	private static Logger logger = Logger.getLogger(IndexedDbElemental2.class.getName());
+	private static Logger logger = Logger.getLogger(ProductIndexedDbRepository.class.getName());
 
 	private static final String DBNAME = "mydbtest";
 
@@ -33,27 +33,12 @@ public class IndexedDbElemental2 {
 	private IDBDatabase db;
 
 	@Inject
-	public IndexedDbElemental2() {
-	}
-
-	public void openDb() {
-		logger.info("Open DB... ");
-
-		Window window = DomGlobal.window;
-		IDBFactory indexedDB = IndexedDbGlobal.indexedDB;
-
-		if (Js.asPropertyMap(window).has("indexedDB")) {
-			logger.info("IndexedDB found 1");
-		}
-		if (indexedDB != null) {
-			logger.info("IndexedDB found 2");
-		}
-
-		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
+	public ProductIndexedDbRepository() {
+		initDb();
 	}
 
 	@SuppressWarnings("unchecked")
-	public void initDb() {
+	private void initDb() {
 		logger.info("Init DB... ");
 
 		openDb();
@@ -74,6 +59,22 @@ public class IndexedDbElemental2 {
 		};
 	}
 
+	public void openDb() {
+		logger.info("Open DB... ");
+
+		Window window = DomGlobal.window;
+		IDBFactory indexedDB = IndexedDbGlobal.indexedDB;
+
+		if (Js.asPropertyMap(window).has("indexedDB")) {
+			logger.info("IndexedDB found 1");
+		}
+		if (indexedDB != null) {
+			logger.info("IndexedDB found 2");
+		}
+
+		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
+	}
+
 	private void doUpgrade(IDBVersionChangeEvent event) {
 		logger.info("Upgrade DB: " + event.target.toString());
 
@@ -89,7 +90,7 @@ public class IndexedDbElemental2 {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void saveData(Product product) {
+	public void save(Product product) {
 		logger.info("Save data in DB...");
 
 		openDb();

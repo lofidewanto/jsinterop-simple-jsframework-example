@@ -14,7 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.github.lofi.client.Product;
-import com.github.lofi.client.ProductRepository;
+import com.github.lofi.client.ProductIndexedDbRepository;
 import com.github.lofi.client.ProductService;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,8 +26,8 @@ class ProductServiceTest {
 	private ProductService productService;
 
 	@BeforeEach
-	void init(@Mock(answer = Answers.RETURNS_DEEP_STUBS) ProductRepository productRepository) {
-		productService = new ProductService(productRepository);
+	void init(@Mock(answer = Answers.RETURNS_DEEP_STUBS) ProductIndexedDbRepository productIndexedDbRepository) {
+		productService = new ProductService(productIndexedDbRepository);
 	}
 
 	@Test
