@@ -30,6 +30,8 @@ public class ProductIdbRepository implements Repository<Product> {
 
 	private static final String STORENAME = "mystorename";
 
+	private static final String TX_READWRITE = "readwrite";
+
 	private IDBOpenDBRequest openDBRequest;
 
 	private IDBDatabase db;
@@ -108,7 +110,7 @@ public class ProductIdbRepository implements Repository<Product> {
 
 			db = (IDBDatabase) openDBRequest.result;
 
-			IDBTransaction transaction = db.transaction(STORENAME, "readwrite");
+			IDBTransaction transaction = db.transaction(STORENAME, TX_READWRITE);
 			IDBObjectStore store = transaction.objectStore(STORENAME);
 
 			store.add(product, product.getId());
