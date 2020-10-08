@@ -1,5 +1,7 @@
 package com.github.lofi.client;
 
+import java.util.Optional;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -18,7 +20,7 @@ import elemental2.indexeddb.IndexedDbGlobal;
 import jsinterop.base.Js;
 
 @Singleton
-public class ProductIndexedDbRepository {
+public class ProductIndexedDbRepository implements Repository<Product> {
 
 	private static Logger logger = Logger.getLogger(ProductIndexedDbRepository.class.getName());
 
@@ -34,14 +36,14 @@ public class ProductIndexedDbRepository {
 
 	@Inject
 	public ProductIndexedDbRepository() {
-		initDb();
+		init();
 	}
 
 	@SuppressWarnings("unchecked")
-	private void initDb() {
+	private void init() {
 		logger.info("Init DB... ");
 
-		openDb();
+		open();
 
 		openDBRequest.onerror = event -> {
 			logger.info("Error opening DB: " + event.target.toString());
@@ -59,7 +61,7 @@ public class ProductIndexedDbRepository {
 		};
 	}
 
-	public void openDb() {
+	private void open() {
 		logger.info("Open DB... ");
 
 		Window window = DomGlobal.window;
@@ -90,10 +92,11 @@ public class ProductIndexedDbRepository {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void save(Product product) {
+	@Override
+	public void persist(Product product) {
 		logger.info("Save data in DB...");
 
-		openDb();
+		open();
 
 		openDBRequest.onerror = event -> {
 			logger.info("Error opening DB: " + event.target.toString());
@@ -119,6 +122,23 @@ public class ProductIndexedDbRepository {
 			doUpgrade(event);
 			return null;
 		};
+	}
+
+	@Override
+	public Optional<Product> get(String id) {
+		// Not implemented yet
+		return null;
+	}
+
+	@Override
+	public Set<Product> get() {
+		// Not implemented yet
+		return null;
+	}
+
+	@Override
+	public void remove(Product entity) {
+		// Not implemented yet
 	}
 
 }

@@ -27,7 +27,7 @@ public class ProductService {
 		product.setId(key);
 		product.setName("Lofi " + key);
 
-		productRepository.save(product);
+		productRepository.persist(product);
 
 		return product;
 	}
