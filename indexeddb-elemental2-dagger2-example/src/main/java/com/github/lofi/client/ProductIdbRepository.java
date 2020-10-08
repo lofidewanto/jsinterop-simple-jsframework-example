@@ -20,9 +20,9 @@ import elemental2.indexeddb.IndexedDbGlobal;
 import jsinterop.base.Js;
 
 @Singleton
-public class ProductIndexedDbRepository implements Repository<Product> {
+public class ProductIdbRepository implements Repository<Product> {
 
-	private static Logger logger = Logger.getLogger(ProductIndexedDbRepository.class.getName());
+	private static Logger logger = Logger.getLogger(ProductIdbRepository.class.getName());
 
 	private static final String DBNAME = "mydbtest";
 
@@ -35,7 +35,7 @@ public class ProductIndexedDbRepository implements Repository<Product> {
 	private IDBDatabase db;
 
 	@Inject
-	public ProductIndexedDbRepository() {
+	public ProductIdbRepository() {
 		init();
 	}
 
