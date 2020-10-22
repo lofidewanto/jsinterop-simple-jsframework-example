@@ -12,21 +12,21 @@ public class ProductService {
 
 	private ProductIdbRepository productRepository;
 
+	private ProductRandomCreator productRandomCreator;
+
 	@Inject
-	public ProductService(ProductIdbRepository productRepository) {
+	public ProductService(ProductIdbRepository productRepository, ProductRandomCreator productRandomCreator) {
 		this.productRepository = productRepository;
+		this.productRandomCreator = productRandomCreator;
 	}
 
 	public Product createProduct() {
-		int random = (int) (Math.random() * 50 + 1);
-		String key = Integer.valueOf(random).toString();
+		String key = productRandomCreator.getRandomId();
+		String type = productRandomCreator.geRandomType();
 
-		logger.info("Random: " + key);
-
-		Product product = new Product();
-		product.setId(key);
-		product.setName("Lofi " + key);
-
+		Product product = new Product.Builder(key, "Lofi " + key).setType(type).setAmount(10).build();
+		logger.info(product.toString());
+		
 		productRepository.persist(product);
 
 		return product;

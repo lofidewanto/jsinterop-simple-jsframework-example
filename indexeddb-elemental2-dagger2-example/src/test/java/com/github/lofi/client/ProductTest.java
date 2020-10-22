@@ -1,4 +1,4 @@
-package com.github.lofi;
+package com.github.lofi.client;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -6,8 +6,6 @@ import java.util.logging.Logger;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.github.lofi.client.Product;
 
 class ProductTest {
 
@@ -17,7 +15,7 @@ class ProductTest {
 
 	@BeforeEach
 	void init() {
-		this.product = new Product();
+		this.product = new Product.Builder("1", "Name").build();
 	}
 
 	@Test

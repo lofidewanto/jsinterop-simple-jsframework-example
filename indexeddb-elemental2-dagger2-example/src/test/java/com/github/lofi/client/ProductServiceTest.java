@@ -1,6 +1,7 @@
-package com.github.lofi;
+package com.github.lofi.client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.util.logging.Logger;
 
@@ -13,10 +14,6 @@ import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.github.lofi.client.Product;
-import com.github.lofi.client.ProductIdbRepository;
-import com.github.lofi.client.ProductService;
-
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
 class ProductServiceTest {
@@ -26,8 +23,13 @@ class ProductServiceTest {
 	private ProductService productService;
 
 	@BeforeEach
-	void init(@Mock(answer = Answers.RETURNS_DEEP_STUBS) ProductIdbRepository productIndexedDbRepository) {
-		productService = new ProductService(productIndexedDbRepository);
+	void init(@Mock(answer = Answers.RETURNS_DEEP_STUBS) ProductIdbRepository productIndexedDbRepository,
+			@Mock(answer = Answers.RETURNS_DEEP_STUBS) ProductRandomCreator productRandomCreator) {
+		
+		when(productRandomCreator.getRandomId()).thenReturn("1");
+		when(productRandomCreator.geRandomType()).thenReturn("Machine");
+		
+		productService = new ProductService(productIndexedDbRepository, productRandomCreator);
 	}
 
 	@Test
@@ -37,6 +39,7 @@ class ProductServiceTest {
 		Product product = productService.createProduct();
 
 		assertEquals("Lofi " + product.getId(), product.getName());
+		assertEquals("Machine", product.getType());
 	}
 
 }
