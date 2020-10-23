@@ -10,11 +10,14 @@ public class Product {
 
 	private final Integer amount;
 
+	private final Integer price;
+
 	private Product(Builder productBuilder) {
 		this.id = productBuilder.id;
 		this.name = productBuilder.name;
 		this.type = productBuilder.type;
 		this.amount = productBuilder.amount;
+		this.price = productBuilder.price;
 	}
 
 	public String getId() {
@@ -33,9 +36,22 @@ public class Product {
 		return amount;
 	}
 
+	public Integer getPrice() {
+		return price;
+	}
+
+	public Integer getCalculatedPriceWithAmount() {
+		if (price == null || amount == null) {
+			return 0;
+		} else {
+			return price * amount;
+		}
+	}
+
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", type=" + type + ", amount=" + amount + "]";
+		return "Product [id=" + id + ", name=" + name + ", type=" + type + ", amount=" + amount + ", price=" + price
+				+ "]";
 	}
 
 	public static class Builder {
@@ -47,6 +63,8 @@ public class Product {
 		private String type;
 
 		private Integer amount;
+
+		private Integer price;
 
 		public Builder(String id, String name) {
 			this.id = id;
@@ -60,6 +78,11 @@ public class Product {
 
 		public Builder setAmount(Integer amount) {
 			this.amount = amount;
+			return this;
+		}
+
+		public Builder setPrice(Integer price) {
+			this.price = price;
 			return this;
 		}
 

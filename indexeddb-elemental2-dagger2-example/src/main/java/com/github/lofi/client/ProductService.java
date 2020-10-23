@@ -23,8 +23,9 @@ public class ProductService {
 	public Product createProduct() {
 		String key = productRandomCreator.getRandomId();
 		String type = productRandomCreator.geRandomType();
+		Integer price = productRandomCreator.getRandomPrice();
 
-		Product product = new Product.Builder(key, "Lofi " + key).setType(type).setAmount(10).build();
+		Product product = new Product.Builder(key, "Lofi " + key).setType(type).setAmount(10).setPrice(price).build();
 		logger.info(product.toString());
 		
 		productRepository.persist(product);

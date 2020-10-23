@@ -41,5 +41,15 @@ class ProductRandomCreatorTest {
 		List<String> givenList = Arrays.asList("Machine", "Computer", "Smartphone", "Car");
 		assertTrue(givenList.contains(randomType));
 	}
+	
+	@Test
+	void get_RandomPrice_ok() {
+		Integer randomPrice = productRandomCreator.getRandomPrice();
+
+		logger.info("Random Price: " + randomPrice);
+
+		// Result from 1 to 100
+		assertTrue(randomPrice <= 100 && randomPrice >= 1);
+	}
 
 }

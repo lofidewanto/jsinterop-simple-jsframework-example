@@ -28,6 +28,7 @@ class ProductServiceTest {
 		
 		when(productRandomCreator.getRandomId()).thenReturn("1");
 		when(productRandomCreator.geRandomType()).thenReturn("Machine");
+		when(productRandomCreator.getRandomPrice()).thenReturn(25);
 		
 		productService = new ProductService(productIndexedDbRepository, productRandomCreator);
 	}
@@ -38,8 +39,10 @@ class ProductServiceTest {
 
 		Product product = productService.createProduct();
 
-		assertEquals("Lofi " + product.getId(), product.getName());
+		assertEquals("Lofi 1", product.getName());
 		assertEquals("Machine", product.getType());
+		assertEquals(25, product.getPrice());
+		assertEquals(250, product.getCalculatedPriceWithAmount());
 	}
 
 }

@@ -25,6 +25,14 @@ public class ProductRandomCreator {
 
 		return id;
 	}
+	
+	public Integer getRandomPrice() {
+		int price = (int) (Math.random() * 100 + 1);
+
+		logger.info("Random Price: " + price);
+
+		return price;
+	}
 
 	public String geRandomType() {
 		Random rand = new Random();
