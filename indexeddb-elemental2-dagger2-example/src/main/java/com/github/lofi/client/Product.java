@@ -51,7 +51,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", type=" + type + ", amount=" + amount + ", price=" + price
-				+ "]";
+				+ ", getCalculatedPriceWithAmount()=" + getCalculatedPriceWithAmount() + "]";
 	}
 
 	public static class Builder {
