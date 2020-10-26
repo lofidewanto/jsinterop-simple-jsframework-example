@@ -11,7 +11,7 @@ public class AppEntryPoint implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		logger.info("Create component Dagger2");
-		DaggerExampleComponent.builder().build().getExampleWebApp();
+		DaggerExampleComponent.create().getProductComposite();
 	}
 
 }

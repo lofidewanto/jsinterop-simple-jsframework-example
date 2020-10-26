@@ -8,6 +8,6 @@ import dagger.Component;
 @Component(modules = { ExampleModule.class })
 interface ExampleComponent {
 
-	ExampleWebApp getExampleWebApp();
+	ProductComposite getProductComposite();
 
 }
