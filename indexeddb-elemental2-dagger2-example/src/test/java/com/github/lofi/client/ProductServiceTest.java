@@ -25,11 +25,11 @@ class ProductServiceTest {
 	@BeforeEach
 	void init(@Mock(answer = Answers.RETURNS_DEEP_STUBS) ProductIdbRepository productIndexedDbRepository,
 			@Mock(answer = Answers.RETURNS_DEEP_STUBS) ProductRandomCreator productRandomCreator) {
-		
+
 		when(productRandomCreator.getRandomId()).thenReturn("1");
 		when(productRandomCreator.geRandomType()).thenReturn("Machine");
 		when(productRandomCreator.getRandomPrice()).thenReturn(25);
-		
+
 		productService = new ProductService(productIndexedDbRepository, productRandomCreator);
 	}
 

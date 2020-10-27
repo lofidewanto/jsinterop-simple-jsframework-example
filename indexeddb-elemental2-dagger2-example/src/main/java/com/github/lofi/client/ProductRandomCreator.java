@@ -12,9 +12,9 @@ import javax.inject.Singleton;
 public class ProductRandomCreator {
 
 	private static Logger logger = Logger.getLogger(ProductRandomCreator.class.getName());
-	
+
 	@Inject
-	public ProductRandomCreator() {		
+	public ProductRandomCreator() {
 	}
 
 	public String getRandomId() {
@@ -25,7 +25,7 @@ public class ProductRandomCreator {
 
 		return id;
 	}
-	
+
 	public Integer getRandomPrice() {
 		int price = (int) (Math.random() * 100 + 1);
 
@@ -45,7 +45,7 @@ public class ProductRandomCreator {
 			int randomIndex = rand.nextInt(givenList.size());
 			randomElement = givenList.get(randomIndex);
 		}
-		
+
 		logger.info("Random Type: " + randomElement);
 
 		return randomElement;

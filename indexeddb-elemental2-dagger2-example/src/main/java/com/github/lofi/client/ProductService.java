@@ -27,7 +27,7 @@ public class ProductService {
 
 		Product product = new Product.Builder(key, "Lofi " + key).setType(type).setAmount(10).setPrice(price).build();
 		logger.info(product.toString());
-		
+
 		productRepository.persist(product);
 
 		return product;
