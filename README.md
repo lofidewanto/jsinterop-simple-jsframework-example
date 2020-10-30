@@ -16,7 +16,7 @@ We have three examples to use IndexedDB APIs on the web browser:
 
 **2. indexeddb-elemental3-example**: this example uses Elemental3 lib from Webtack (very early version).
 
-**3. indexeddb-elemental2-dagger2-example**: this example shows to use well known Design Patterns in GWT applications.
+**3. indexeddb-elemental2-dagger2-example**: this example shows how use well known Design Patterns in GWT applications for IndexedDB.
 
 [![Build Status](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example.svg?branch=master)](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example)
 
