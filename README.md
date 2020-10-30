@@ -28,7 +28,7 @@ mvn clean package
 
 To run the example:
 
-1. First: go to the project you want to run: **indexeddb-elemental2-example** or **indexeddb-elemental3-example**
+1. First: go to the project you want to run: **indexeddb-elemental2-example** or **indexeddb-elemental3-example** or **indexeddb-elemental2-dagger2-example** 
 
 2. In the directory run the GWT Dev Mode: 
 ```
