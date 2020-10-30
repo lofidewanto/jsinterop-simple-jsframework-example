@@ -7,14 +7,17 @@ This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boo
 
 Take a look at this article to see the whole story: http://bit.ly/GWTJ2CLIndexedDB
 
+Also this article for the Design Patterns in Java: https://bit.ly/GwtIndexedDBDesignPatterns
+
 [![Build Status](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example.svg?branch=master)](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example)
 
 We have two examples to use IndexedDB APIs on the web browser:
 
-
 **1. indexeddb-elemental2-example**: this example uses Elemental2 lib.
 
 **2. indexeddb-elemental3-example**: this example uses Elemental3 lib from Webtack (very early version).
+
+**3. indexeddb-elemental2-dagger2-example**: this example shows to use well known Design Patterns in GWT applications.
 
 
 ## Build example
