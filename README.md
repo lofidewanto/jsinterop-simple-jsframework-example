@@ -5,6 +5,7 @@ and very early version of [**Elemental3 Webtack Generator**](https://github.com/
 
 This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boot-samples
 
+Following articles are available as guidance:
 - Take a look at this article to see the whole story: http://bit.ly/GWTJ2CLIndexedDB
 - Also this article for the Design Patterns in Java: https://bit.ly/GwtIndexedDBDesignPatterns
 
