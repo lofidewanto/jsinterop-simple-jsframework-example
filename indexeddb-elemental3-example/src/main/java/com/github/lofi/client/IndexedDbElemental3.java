@@ -34,9 +34,6 @@ public class IndexedDbElemental3 {
 		if (Js.asPropertyMap(window).has("indexedDB")) {
 			logger.info("IndexedDB found 1");
 		}
-		if (indexedDB != null) {
-			logger.info("IndexedDB found 2");
-		}
 
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
 
