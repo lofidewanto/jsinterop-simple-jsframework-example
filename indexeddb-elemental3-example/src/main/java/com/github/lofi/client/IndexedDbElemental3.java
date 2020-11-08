@@ -30,9 +30,7 @@ public class IndexedDbElemental3 {
 
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
 
-		openDBRequest.onerror = event -> {
-			logger.info("Error opening DB: " + event.target());
-		};
+		openDBRequest.onerror = event -> logger.info("Error opening DB: " + event.target());
 
 		openDBRequest.onsuccess = this::addProducts;
 
