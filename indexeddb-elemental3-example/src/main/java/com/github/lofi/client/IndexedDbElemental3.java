@@ -10,6 +10,7 @@ import elemental3.indexeddb.IDBOpenDBRequest;
 import elemental3.indexeddb.IDBTransaction;
 import elemental3.indexeddb.IDBTransactionMode;
 import elemental3.indexeddb.IDBVersionChangeEvent;
+import jsinterop.base.Js;
 
 public class IndexedDbElemental3 {
 
@@ -20,6 +21,10 @@ public class IndexedDbElemental3 {
 	private static final String STORENAME = "mystorename";
 
 	public void openDb() {
+		if (!Js.global().has("indexedDB")) {
+			Console.log("IndexedDB not present");
+			return;
+		}
 		IDBFactory indexedDB = Global.indexedDB();
 
 		IDBOpenDBRequest request = indexedDB.open(DBNAME, DBVERSION);
