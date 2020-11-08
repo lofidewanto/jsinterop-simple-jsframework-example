@@ -29,11 +29,8 @@ public class IndexedDbElemental3 {
 		IDBFactory indexedDB = Global.indexedDB();
 
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
-
 		openDBRequest.onerror = event -> logger.info("Error opening DB: " + event.target());
-
 		openDBRequest.onsuccess = this::addProducts;
-
 		openDBRequest.onupgradeneeded = this::doUpgrade;
 	}
 
