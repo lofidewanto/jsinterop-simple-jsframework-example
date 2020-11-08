@@ -28,7 +28,7 @@ public class IndexedDbElemental3 {
 	private IDBDatabase db;
 
 	public void openDb() {
-		IDBFactory indexedDB = Global.globalThis().indexedDB();
+		IDBFactory indexedDB = Global.indexedDB();
 
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
 
