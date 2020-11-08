@@ -60,7 +60,7 @@ public class IndexedDbElemental3 {
 
 		db = (IDBDatabase) openDBRequest.result();
 
-		IDBTransaction transaction = db.transaction(STORENAME, "readwrite");
+		IDBTransaction transaction = db.transaction(STORENAME, IDBTransactionMode.readwrite);
 		IDBObjectStore store = transaction.objectStore(STORENAME);
 
 		int random = (int) (Math.random() * 50 + 1);
