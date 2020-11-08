@@ -28,12 +28,7 @@ public class IndexedDbElemental3 {
 	private IDBDatabase db;
 
 	public void openDb() {
-		Window window = Global.globalThis();
 		IDBFactory indexedDB = Global.globalThis().indexedDB();
-
-		if (Js.asPropertyMap(window).has("indexedDB")) {
-			logger.info("IndexedDB found 1");
-		}
 
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
 
