@@ -9,6 +9,7 @@ import elemental3.indexeddb.IDBObjectStore;
 import elemental3.indexeddb.IDBOpenDBRequest;
 import elemental3.indexeddb.IDBTransaction;
 import elemental3.indexeddb.IDBTransactionMode;
+import elemental3.indexeddb.IDBVersionChangeEvent;
 
 public class IndexedDbElemental3 {
 
@@ -27,7 +28,7 @@ public class IndexedDbElemental3 {
 		request.onupgradeneeded = this::doUpgrade;
 	}
 
-	private void doUpgrade(Event event) {
+	private void doUpgrade(IDBVersionChangeEvent event) {
 		Console.log("Upgrade DB: " + event.target());
 
 		IDBObjectStore store = getDatabase(event).createObjectStore(STORENAME);
