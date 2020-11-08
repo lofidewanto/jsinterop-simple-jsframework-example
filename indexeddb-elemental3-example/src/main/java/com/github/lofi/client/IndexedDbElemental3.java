@@ -20,8 +20,6 @@ public class IndexedDbElemental3 {
 
 	private IDBOpenDBRequest openDBRequest;
 
-	private IDBDatabase db;
-
 	public void openDb() {
 		IDBFactory indexedDB = Global.indexedDB();
 
@@ -34,18 +32,15 @@ public class IndexedDbElemental3 {
 	private void doUpgrade(Event event) {
 		Console.log("Upgrade DB: " + event.target());
 
-		db = (IDBDatabase) openDBRequest.result();
+		IDBObjectStore store = getDatabase(event).createObjectStore(STORENAME);
 
-		IDBObjectStore store = db.createObjectStore(STORENAME);
 		store.createIndex("products_id_unqiue", new String[]{ "id" });
 	}
 
 	private void addProducts(Event event) {
 		Console.log("Success opening DB: " + event.type());
 
-		db = (IDBDatabase) openDBRequest.result();
-
-		IDBTransaction transaction = db.transaction(STORENAME, IDBTransactionMode.readwrite);
+		IDBTransaction transaction = getDatabase(event).transaction(STORENAME, IDBTransactionMode.readwrite);
 		IDBObjectStore store = transaction.objectStore(STORENAME);
 
 		int random = (int) (Math.random() * 50 + 1);
@@ -60,4 +55,7 @@ public class IndexedDbElemental3 {
 		store.add(product, key);
 	}
 
+	private IDBDatabase getDatabase(Event event) {
+		return (IDBDatabase) ((IDBOpenDBRequest) event.currentTarget()).result();
+	}
 }
