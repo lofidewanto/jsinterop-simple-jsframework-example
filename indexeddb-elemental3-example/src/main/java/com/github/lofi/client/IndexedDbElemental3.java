@@ -18,15 +18,13 @@ public class IndexedDbElemental3 {
 
 	private static final String STORENAME = "mystorename";
 
-	private IDBOpenDBRequest openDBRequest;
-
 	public void openDb() {
 		IDBFactory indexedDB = Global.indexedDB();
 
-		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
-		openDBRequest.onerror = event -> Console.log("Error opening DB: " + event.target());
-		openDBRequest.onsuccess = this::addProducts;
-		openDBRequest.onupgradeneeded = this::doUpgrade;
+		IDBOpenDBRequest request = indexedDB.open(DBNAME, DBVERSION);
+		request.onerror = event -> Console.log("Error opening DB: " + event.target());
+		request.onsuccess = this::addProducts;
+		request.onupgradeneeded = this::doUpgrade;
 	}
 
 	private void doUpgrade(Event event) {
