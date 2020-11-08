@@ -36,13 +36,9 @@ public class IndexedDbElemental3 {
 			logger.info("Error opening DB: " + event.target());
 		};
 
-		openDBRequest.onsuccess = event -> {
-			addProducts(event);
-		};
+		openDBRequest.onsuccess = this::addProducts;
 
-		openDBRequest.onupgradeneeded = event -> {
-			doUpgrade(event);
-		};
+		openDBRequest.onupgradeneeded = this::doUpgrade;
 	}
 
 	private void doUpgrade(Event event) {
