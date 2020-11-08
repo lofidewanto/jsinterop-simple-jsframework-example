@@ -33,7 +33,7 @@ public class IndexedDbElemental3 {
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
 
 		openDBRequest.onerror = event -> {
-			logger.info("Error opening DB: " + event.target().toString());
+			logger.info("Error opening DB: " + event.target());
 		};
 
 		openDBRequest.onsuccess = event -> {
@@ -46,7 +46,7 @@ public class IndexedDbElemental3 {
 	}
 
 	private void doUpgrade(Event event) {
-		logger.info("Upgrade DB: " + event.target().toString());
+		logger.info("Upgrade DB: " + event.target());
 
 		db = (IDBDatabase) openDBRequest.result();
 
