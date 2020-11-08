@@ -6,7 +6,6 @@ import elemental3.Global;
 import elemental3.indexeddb.IDBDatabase;
 import elemental3.indexeddb.IDBFactory;
 import elemental3.indexeddb.IDBObjectStore;
-import elemental3.indexeddb.IDBObjectStoreParameters;
 import elemental3.indexeddb.IDBOpenDBRequest;
 import elemental3.indexeddb.IDBTransaction;
 import elemental3.indexeddb.IDBTransactionMode;
@@ -37,9 +36,7 @@ public class IndexedDbElemental3 {
 
 		db = (IDBDatabase) openDBRequest.result();
 
-		IDBObjectStoreParameters params = IDBObjectStoreParameters.create();
 		String[] paths = { "id" };
-		params.setKeyPath(paths);
 
 		IDBObjectStore store = db.createObjectStore(STORENAME);
 
