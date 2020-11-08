@@ -1,5 +1,6 @@
 package com.github.lofi.client;
 
+import elemental3.Console;
 import elemental3.Event;
 import elemental3.Global;
 import elemental3.indexeddb.IDBDatabase;
@@ -9,11 +10,8 @@ import elemental3.indexeddb.IDBObjectStoreParameters;
 import elemental3.indexeddb.IDBOpenDBRequest;
 import elemental3.indexeddb.IDBTransaction;
 import elemental3.indexeddb.IDBTransactionMode;
-import java.util.logging.Logger;
 
 public class IndexedDbElemental3 {
-
-	private static Logger logger = Logger.getLogger(IndexedDbElemental3.class.getName());
 
 	private static final String DBNAME = "mydbtest";
 
@@ -29,13 +27,13 @@ public class IndexedDbElemental3 {
 		IDBFactory indexedDB = Global.indexedDB();
 
 		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
-		openDBRequest.onerror = event -> logger.info("Error opening DB: " + event.target());
+		openDBRequest.onerror = event -> Console.log("Error opening DB: " + event.target());
 		openDBRequest.onsuccess = this::addProducts;
 		openDBRequest.onupgradeneeded = this::doUpgrade;
 	}
 
 	private void doUpgrade(Event event) {
-		logger.info("Upgrade DB: " + event.target());
+		Console.log("Upgrade DB: " + event.target());
 
 		db = (IDBDatabase) openDBRequest.result();
 
@@ -49,7 +47,7 @@ public class IndexedDbElemental3 {
 	}
 
 	private void addProducts(Event event) {
-		logger.info("Success opening DB: " + event.type());
+		Console.log("Success opening DB: " + event.type());
 
 		db = (IDBDatabase) openDBRequest.result();
 
@@ -59,7 +57,7 @@ public class IndexedDbElemental3 {
 		int random = (int) (Math.random() * 50 + 1);
 		String key = Integer.valueOf(random).toString();
 
-		logger.info("Random: " + key);
+		Console.log("Random: " + key);
 
 		Product product = new Product();
 		product.setId(key);
