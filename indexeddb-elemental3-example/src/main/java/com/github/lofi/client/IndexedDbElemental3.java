@@ -36,11 +36,8 @@ public class IndexedDbElemental3 {
 
 		db = (IDBDatabase) openDBRequest.result();
 
-		String[] paths = { "id" };
-
 		IDBObjectStore store = db.createObjectStore(STORENAME);
-
-		store.createIndex("products_id_unqiue", paths);
+		store.createIndex("products_id_unqiue", new String[]{ "id" });
 	}
 
 	private void addProducts(Event event) {
