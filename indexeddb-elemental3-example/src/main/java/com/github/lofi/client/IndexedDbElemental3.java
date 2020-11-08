@@ -1,17 +1,15 @@
 package com.github.lofi.client;
 
-import java.util.logging.Logger;
-
 import elemental3.Event;
 import elemental3.Global;
-import elemental3.IDBDatabase;
-import elemental3.IDBFactory;
-import elemental3.IDBObjectStore;
-import elemental3.IDBObjectStoreParameters;
-import elemental3.IDBOpenDBRequest;
-import elemental3.IDBTransaction;
-import elemental3.Window;
-import jsinterop.base.Js;
+import elemental3.indexeddb.IDBDatabase;
+import elemental3.indexeddb.IDBFactory;
+import elemental3.indexeddb.IDBObjectStore;
+import elemental3.indexeddb.IDBObjectStoreParameters;
+import elemental3.indexeddb.IDBOpenDBRequest;
+import elemental3.indexeddb.IDBTransaction;
+import elemental3.indexeddb.IDBTransactionMode;
+import java.util.logging.Logger;
 
 public class IndexedDbElemental3 {
 
