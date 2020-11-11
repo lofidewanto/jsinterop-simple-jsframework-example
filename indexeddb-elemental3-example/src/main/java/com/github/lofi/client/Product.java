@@ -1,25 +1,33 @@
 package com.github.lofi.client;
 
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class Product {
 
 	private String id;
 
 	private String name;
 
-	public String getId() {
+	@JsOverlay
+	public final String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	@JsOverlay
+	public final void setId(String id) {
 		this.id = id;
 	}
 
-	public String getName() {
+	@JsOverlay
+	public final String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	@JsOverlay
+	public final void setName(String name) {
 		this.name = name;
 	}
-
 }

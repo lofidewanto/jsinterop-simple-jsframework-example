@@ -1,21 +1,18 @@
 package com.github.lofi.client;
 
-import java.util.logging.Logger;
-
+import elemental3.Console;
 import elemental3.Event;
 import elemental3.Global;
-import elemental3.IDBDatabase;
-import elemental3.IDBFactory;
-import elemental3.IDBObjectStore;
-import elemental3.IDBObjectStoreParameters;
-import elemental3.IDBOpenDBRequest;
-import elemental3.IDBTransaction;
-import elemental3.Window;
+import elemental3.indexeddb.IDBDatabase;
+import elemental3.indexeddb.IDBFactory;
+import elemental3.indexeddb.IDBObjectStore;
+import elemental3.indexeddb.IDBOpenDBRequest;
+import elemental3.indexeddb.IDBTransaction;
+import elemental3.indexeddb.IDBTransactionMode;
+import elemental3.indexeddb.IDBVersionChangeEvent;
 import jsinterop.base.Js;
 
 public class IndexedDbElemental3 {
-
-	private static Logger logger = Logger.getLogger(IndexedDbElemental3.class.getName());
 
 	private static final String DBNAME = "mydbtest";
 
@@ -23,62 +20,37 @@ public class IndexedDbElemental3 {
 
 	private static final String STORENAME = "mystorename";
 
-	private IDBOpenDBRequest openDBRequest;
-
-	private IDBDatabase db;
-
 	public void openDb() {
-		Window window = Global.globalThis();
-		IDBFactory indexedDB = Global.globalThis().indexedDB();
-
-		if (Js.asPropertyMap(window).has("indexedDB")) {
-			logger.info("IndexedDB found 1");
+		if (!Js.global().has("indexedDB")) {
+			Console.log("IndexedDB not present");
+			return;
 		}
-		if (indexedDB != null) {
-			logger.info("IndexedDB found 2");
-		}
+		IDBFactory indexedDB = Global.indexedDB();
 
-		openDBRequest = indexedDB.open(DBNAME, DBVERSION);
-
-		openDBRequest.onerror = event -> {
-			logger.info("Error opening DB: " + event.target().toString());
-		};
-
-		openDBRequest.onsuccess = event -> {
-			addProducts(event);
-		};
-
-		openDBRequest.onupgradeneeded = event -> {
-			doUpgrade(event);
-		};
+		IDBOpenDBRequest request = indexedDB.open(DBNAME, DBVERSION);
+		request.onerror = event -> Console.log("Error opening DB: " + event.target());
+		request.onsuccess = this::addProducts;
+		request.onupgradeneeded = this::doUpgrade;
 	}
 
-	private void doUpgrade(Event event) {
-		logger.info("Upgrade DB: " + event.target().toString());
+	private void doUpgrade(IDBVersionChangeEvent event) {
+		Console.log("Upgrade DB: " + event.target());
 
-		db = (IDBDatabase) openDBRequest.result();
+		IDBObjectStore store = getDatabase(event).createObjectStore(STORENAME);
 
-		IDBObjectStoreParameters params = IDBObjectStoreParameters.create();
-		String[] paths = { "id" };
-		params.setKeyPath(paths);
-
-		IDBObjectStore store = db.createObjectStore(STORENAME);
-
-		store.createIndex("products_id_unqiue", paths);
+		store.createIndex("products_id_unqiue", new String[]{ "id" });
 	}
 
 	private void addProducts(Event event) {
-		logger.info("Success opening DB: " + event.type());
+		Console.log("Success opening DB: " + event.type());
 
-		db = (IDBDatabase) openDBRequest.result();
-
-		IDBTransaction transaction = db.transaction(STORENAME, "readwrite");
+		IDBTransaction transaction = getDatabase(event).transaction(STORENAME, IDBTransactionMode.readwrite);
 		IDBObjectStore store = transaction.objectStore(STORENAME);
 
 		int random = (int) (Math.random() * 50 + 1);
 		String key = Integer.valueOf(random).toString();
 
-		logger.info("Random: " + key);
+		Console.log("Random: " + key);
 
 		Product product = new Product();
 		product.setId(key);
@@ -87,4 +59,7 @@ public class IndexedDbElemental3 {
 		store.add(product, key);
 	}
 
+	private IDBDatabase getDatabase(Event event) {
+		return (IDBDatabase) ((IDBOpenDBRequest) event.currentTarget()).result();
+	}
 }
