@@ -1,15 +1,15 @@
 package com.github.lofi.client;
 
-import elemental3.Console;
-import elemental3.Event;
-import elemental3.Global;
-import elemental3.indexeddb.IDBDatabase;
-import elemental3.indexeddb.IDBFactory;
-import elemental3.indexeddb.IDBObjectStore;
-import elemental3.indexeddb.IDBOpenDBRequest;
-import elemental3.indexeddb.IDBTransaction;
-import elemental3.indexeddb.IDBTransactionMode;
-import elemental3.indexeddb.IDBVersionChangeEvent;
+import akasha.Console;
+import akasha.Event;
+import akasha.Global;
+import akasha.idb.IDBDatabase;
+import akasha.idb.IDBFactory;
+import akasha.idb.IDBObjectStore;
+import akasha.idb.IDBOpenDBRequest;
+import akasha.idb.IDBTransaction;
+import akasha.idb.IDBTransactionMode;
+import akasha.idb.IDBVersionChangeEvent;
 import jsinterop.base.Js;
 
 public class IndexedDbElemental3 {
