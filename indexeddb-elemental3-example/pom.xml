@@ -30,13 +30,13 @@
 		
 		<dependency>
 			<groupId>org.realityforge.akasha</groupId>
-			<artifactId>akasha-java</artifactId>
-			<version>0.02</version>
+			<artifactId>akasha-gwt</artifactId>
+			<version>0.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.realityforge.akasha</groupId>
-			<artifactId>akasha-java</artifactId>
-			<version>0.02</version>
+			<artifactId>akasha-gwt</artifactId>
+			<version>0.11</version>
 			<classifier>sources</classifier>
 		</dependency>
 

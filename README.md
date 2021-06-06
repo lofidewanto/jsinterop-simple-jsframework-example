@@ -1,7 +1,7 @@
 # jsinterop-simple-jsframework-example
 Simple Example for Accessing JavaScript Frameworks from Java GWT 
 with [**Elemental2**](https://github.com/google/elemental2) 
-and very early version of [**Elemental3 Webtack Generator**](https://github.com/realityforge/webtack)
+and very early version of [**Akasha**](https://github.com/akasha/akasha)
 
 This example uses GWT Boot as Starter Parent: https://github.com/gwtboot/gwt-boot-samples
 
@@ -14,7 +14,7 @@ We have three examples to use IndexedDB APIs on the web browser:
 
 **1. indexeddb-elemental2-example**: this example uses Elemental2 lib.
 
-**2. indexeddb-elemental3-example**: this example uses Elemental3 lib from Webtack (very early version).
+**2. indexeddb-elemental3-example**: this example uses the Akasha lib.
 
 **3. indexeddb-elemental2-dagger2-example**: this example shows how to use well known Design Patterns in GWT applications with IndexedDB.
 
@@ -86,11 +86,11 @@ http://127.0.0.1:8888/calculator/
 - JsInterop Generator generates Java JsInterops files from Closure Externs. Closure Externs are mostly hand written. Example: 
 Someone decided to map Any to a Template value. The Extern Def file is at https://github.com/google/closure-compiler/blob/master/externs/browser/w3c_indexeddb.js#L166 
 but really they could map it in a few different ways. 
-- **Webtack Generator** (https://github.com/realityforge/webtack) reads the WebIDL and generates Java JsInterop files from that. 
+- **Akasha** (https://github.com/akasha/akasha) reads the WebIDL and generates Java JsInterop files from that.
 A similar but slightly different set of conventions from Elemental2. Example:  
-In the case above Webtack would map it to Any but in some cases it maps it to @DoNotAutobox object.
+In the case above Akasha would map it to Any but in some cases it maps it to @DoNotAutobox object.
 
-### Differences beetween JsInterop Generator generated file and Webtack Generator generated file
+### Differences beetween JsInterop Generator generated file and Akasha files
 
 #### *IDBRequest.java* from JsInterop Generator
 
@@ -196,13 +196,16 @@ public class IDBRequest<T> implements EventTarget {
 }
 ```
 
-#### *IDBRequest.java* from Webtack Generator
+#### *IDBRequest.java* from Akasha
 
 ```
+
 /**
- * The request object does not initially contain any information about the result of the operation, but once information becomes available, an event is fired on the request, and the information becomes available through the properties of the IDBRequest instance.
+ * The IDBRequest interface of the IndexedDB API provides access to results of asynchronous requests to databases and database objects using event handler attributes. Each reading and writing operation on a database is done using a request.
  *
  * @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest">IDBRequest - MDN</a>
+ * @see <a href="https://www.w3.org/TR/IndexedDB/#idbrequest">IDBRequest - Indexed Database API 2.0</a>
+ * @see <a href="https://www.w3.org/TR/IndexedDB/#request-api">IDBRequest - Indexed Database API 2.0</a>
  */
 @Generated("org.realityforge.webtack")
 @JsType(
@@ -215,6 +218,8 @@ public class IDBRequest extends EventTarget {
    * The following example requests a given record title, onsuccess gets the associated record from the IDBObjectStore (made available as objectStoreTitleRequest.result), updates one property of the record, and then puts the updated record back into the object store. Also included at the bottom is an onerror function that reports what the error was if the request fails. For a full working example, see our To-do Notifications app (view example live.)
    *
    * @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/onerror">IDBRequest.onerror - MDN</a>
+   * @see <a href="https://www.w3.org/TR/IndexedDB/#dom-idbrequest-onerror">onerror - Indexed Database API 2.0</a>
+   * @see <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-onerror">onerror - Indexed Database API Draft</a>
    */
   @Nullable
   public EventHandler onerror;
@@ -223,17 +228,21 @@ public class IDBRequest extends EventTarget {
    * The following example requests a given record title, onsuccess gets the associated record from the IDBObjectStore (made available as objectStoreTitleRequest.result), updates one property of the record, and then puts the updated record back into the object store. For a full working example, see our To-do Notifications app (view example live.)
    *
    * @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/onsuccess">IDBRequest.onsuccess - MDN</a>
+   * @see <a href="https://www.w3.org/TR/IndexedDB/#dom-idbrequest-onsuccess">onsuccess - Indexed Database API 2.0</a>
+   * @see <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-onsuccess">onsuccess - Indexed Database API Draft</a>
    */
   @Nullable
   public EventHandler onsuccess;
 
-  IDBRequest() {
+  protected IDBRequest() {
   }
 
   /**
    * A DOMError containing the relevant error. In Chrome 48+/Firefox 58+ this property returns a DOMException because DOMError has been removed from the DOM standard. The following error codes are returned under certain conditions:
    *
    * @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/error">IDBRequest.error - MDN</a>
+   * @see <a href="https://www.w3.org/TR/IndexedDB/#dom-idbrequest-error">error - Indexed Database API 2.0</a>
+   * @see <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-error">error - Indexed Database API Draft</a>
    */
   @JsProperty(
       name = "error"
@@ -245,17 +254,22 @@ public class IDBRequest extends EventTarget {
    * The IDBRequestReadyState of the request, which takes one of the following two values:
    *
    * @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/readyState">IDBRequest.readyState - MDN</a>
+   * @see <a href="https://www.w3.org/TR/IndexedDB/#dom-idbrequest-readystate">readyState - Indexed Database API 2.0</a>
+   * @see <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-readystate">readyState - Indexed Database API Draft</a>
    */
   @JsProperty(
       name = "readyState"
   )
   @Nonnull
+  @IDBRequestReadyState
   public native String readyState();
 
   /**
    * any
    *
    * @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/result">IDBRequest.result - MDN</a>
+   * @see <a href="https://www.w3.org/TR/IndexedDB/#dom-idbrequest-result">result - Indexed Database API 2.0</a>
+   * @see <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-result">result - Indexed Database API Draft</a>
    */
   @JsProperty(
       name = "result"
@@ -267,6 +281,8 @@ public class IDBRequest extends EventTarget {
    * An object representing the source of the request, such as an IDBIndex, IDBObjectStore or IDBCursor.
    *
    * @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/source">IDBRequest.source - MDN</a>
+   * @see <a href="https://www.w3.org/TR/IndexedDB/#dom-idbrequest-source">source - Indexed Database API 2.0</a>
+   * @see <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-source">source - Indexed Database API Draft</a>
    */
   @JsProperty(
       name = "source"
@@ -278,6 +294,8 @@ public class IDBRequest extends EventTarget {
    * An IDBTransaction.
    *
    * @see <a href="https://developer.mozilla.org/en-US/docs/Web/API/IDBRequest/transaction">IDBRequest.transaction - MDN</a>
+   * @see <a href="https://www.w3.org/TR/IndexedDB/#dom-idbrequest-transaction">transaction - Indexed Database API 2.0</a>
+   * @see <a href="https://w3c.github.io/IndexedDB/#dom-idbrequest-transaction">transaction - Indexed Database API Draft</a>
    */
   @JsProperty(
       name = "transaction"
@@ -292,8 +310,9 @@ public class IDBRequest extends EventTarget {
   }
 
   @JsOverlay
-  public final void addErrorListener(@Nonnull final EventListener callback, final boolean options) {
-    addEventListener( "error", Js.cast( callback ), options );
+  public final void addErrorListener(@Nonnull final EventListener callback,
+      final boolean useCapture) {
+    addEventListener( "error", Js.cast( callback ), useCapture );
   }
 
   @JsOverlay
@@ -309,8 +328,8 @@ public class IDBRequest extends EventTarget {
 
   @JsOverlay
   public final void removeErrorListener(@Nonnull final EventListener callback,
-      final boolean options) {
-    removeEventListener( "error", Js.cast( callback ), options );
+      final boolean useCapture) {
+    removeEventListener( "error", Js.cast( callback ), useCapture );
   }
 
   @JsOverlay
@@ -326,8 +345,8 @@ public class IDBRequest extends EventTarget {
 
   @JsOverlay
   public final void addSuccessListener(@Nonnull final EventListener callback,
-      final boolean options) {
-    addEventListener( "success", Js.cast( callback ), options );
+      final boolean useCapture) {
+    addEventListener( "success", Js.cast( callback ), useCapture );
   }
 
   @JsOverlay
@@ -343,8 +362,8 @@ public class IDBRequest extends EventTarget {
 
   @JsOverlay
   public final void removeSuccessListener(@Nonnull final EventListener callback,
-      final boolean options) {
-    removeEventListener( "success", Js.cast( callback ), options );
+      final boolean useCapture) {
+    removeEventListener( "success", Js.cast( callback ), useCapture );
   }
 
   @JsOverlay
@@ -354,10 +373,10 @@ public class IDBRequest extends EventTarget {
 }
 ```
 
-### Summary JsInterop Generator and Webtack Generator
+### Summary JsInterop Generator and Akasha
 
 - Elemental2 which is generated from *JsInterop Generator* is actually more JavaScript oriented since the
 source is from hand written Closure Externs.
-- *WebTack Generator* is more Java oriented.
+- *Akasha* is more Java oriented.
 
 

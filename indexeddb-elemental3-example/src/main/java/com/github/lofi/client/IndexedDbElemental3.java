@@ -3,6 +3,7 @@ package com.github.lofi.client;
 import akasha.Console;
 import akasha.Event;
 import akasha.Global;
+import akasha.WindowGlobal;
 import akasha.idb.IDBDatabase;
 import akasha.idb.IDBFactory;
 import akasha.idb.IDBObjectStore;
@@ -25,7 +26,7 @@ public class IndexedDbElemental3 {
 			Console.log("IndexedDB not present");
 			return;
 		}
-		IDBFactory indexedDB = Global.indexedDB();
+		IDBFactory indexedDB = WindowGlobal.indexedDB();
 
 		IDBOpenDBRequest request = indexedDB.open(DBNAME, DBVERSION);
 		request.onerror = event -> Console.log("Error opening DB: " + event.target());
