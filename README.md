@@ -18,7 +18,7 @@ We have three examples to use IndexedDB APIs on the web browser:
 
 **3. indexeddb-elemental2-dagger2-example**: this example shows how to use well known Design Patterns in GWT applications with IndexedDB.
 
-![Build Status Travis](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example.svg?branch=master)](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example)
+[![Build Status](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example.svg?branch=master)](https://travis-ci.com/lofidewanto/jsinterop-simple-jsframework-example)
 
 ![Build Status GitHub Actions](https://github.com/lofidewanto/jsinterop-simple-jsframework-example/actions/workflows/maven.yml/badge.svg)
 
