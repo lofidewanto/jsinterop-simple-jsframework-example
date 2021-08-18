@@ -31,12 +31,12 @@
 		<dependency>
 			<groupId>org.realityforge.akasha</groupId>
 			<artifactId>akasha-gwt</artifactId>
-			<version>0.11</version>
+			<version>0.20</version>
 		</dependency>
 		<dependency>
 			<groupId>org.realityforge.akasha</groupId>
 			<artifactId>akasha-gwt</artifactId>
-			<version>0.11</version>
+			<version>0.20</version>
 			<classifier>sources</classifier>
 		</dependency>
 
