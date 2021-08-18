@@ -22,7 +22,7 @@ public class IndexedDbElemental3 {
 	private static final String STORENAME = "mystorename";
 
 	public void openDb() {
-		if (!Js.global().has("indexedDB")) {
+		if (!WindowGlobal.isIndexedDBSupported()) {
 			Console.log("IndexedDB not present");
 			return;
 		}
